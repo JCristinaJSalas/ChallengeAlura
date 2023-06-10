@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { FirebaseProveedor } from "./FireBase/DatosFirebase";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import styled from "styled-components";
+import Home from "./components/Home";
+import PokemonDetalles from "./components/PokemonDetalles";
+import Footer from "./components/Footer";
+import NuevoPokemon from "./components/NuevoPokemon";
+import TipoPokemon from "./components/TipoPokemon";
+import EditarCategoria from "./components/EditarCategoria";
+import EditarPokemon from "./components/EditarPokemon";
 
-function App() {
+export default function Root() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FirebaseProveedor>
+      <App />
+    </FirebaseProveedor>
   );
 }
 
-export default App;
+export function App() {
+  
+  return (
+    <Router>
+      <ContenedorHome>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pokemon/:pokemonName" element={<PokemonDetalles />}/>
+          <Route path="/nuevo-pokemon" element={<NuevoPokemon />} />
+          <Route path="/nuevo-tipo-de-pokemon" element={<TipoPokemon />} /> 
+          <Route path="/tipo-pokemon/editar/:id" element={<EditarCategoria />}/>
+          
+          <Route path="/tipo-pokemon/editarPokemon/:id" element={<EditarPokemon />}/>
+        </Routes>
+        <Footer/>
+      </ContenedorHome>
+    </Router>
+  );
+}
+
+const ContenedorHome = styled.div`
+  background: #000;
+`;
