@@ -36,7 +36,7 @@ const Tarjeta = ({ id, name, tipoPokemon, linkImagen, logo, color }) => {
         </NavLink>
       </Root>
       <ContenedorFuture>
-        <Link to={`/tipo-pokemon/editarPokemon/${id}`}>
+        <Link to={`/pokemon/editarPokemon/${id}`}>
           <Pencil size={25} />
         </Link>
         <Trash size={23} onClick={() => eliminarPokemon(id)} />
