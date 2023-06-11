@@ -16,7 +16,6 @@ const PokemonDetalles = () => {
   const [estadoModal, setEstadoModal] = useState(false);
 
   const pokemonSeleccionado = pokemon.find((poke) => poke.name === pokemonName);
-
   const logo = tipoPokemon
     .filter((categoria) => categoria.tipo === pokemonSeleccionado.tipoPokemon)
     .map((filterCategoria) => filterCategoria.logo);
@@ -80,7 +79,7 @@ const PokemonDetalles = () => {
             <Parrafo>{pokemonSeleccionado.descripcion}</Parrafo>
             <ContenedorFuture>
               <Link
-                to={`/tipo-pokemon/editarPokemon/${pokemonSeleccionado.id}`}
+                to={`/pokemon/editarPokemon/${pokemonSeleccionado.id}`}
               >
                 <Pencil size={25} />
               </Link>
@@ -104,15 +103,18 @@ const ContenedorPokemon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 450px;
   margin: 25px auto;
 `;
 const ContenedorTarjeta = styled.div`
   background-color: #f4f4f4;
-  width: 85vw;
+  max-width: 450px;
   height: auto;
-  margin: 15px;
   border-radius: 10px;
+
+  @media only screen and (max-width: 426px) {
+    max-width: 270px;
+    margin:5px auto;
+  }
 `;
 const ContenedorTitulo = styled.div`
   display: flex;
@@ -132,12 +134,14 @@ const ContenedorDos = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
 const ImagenCon = styled.img`
   width: 45px;
   margin: 0 5px;
   object-fit: cover;
   text-align: center;
+  @media only screen and (max-width: 426px) {
+    width: 35px;
+  }
 `;
 const ContenedorImgVideo = styled.div`
   display: flex;
@@ -155,9 +159,12 @@ const ImagenPoke = styled.img`
   margin: 15px 0 35px 0;
 
   filter: drop-shadow(-2px 2px 15px rgba(0, 0, 0, 0.7));
+  @media only screen and (max-width: 426px) {
+    width: 105px;
+  }
 `;
 const Parrafo = styled.p`
-  padding: 20px 50px;
+  padding: 24px;
   font-size: 16px;
   text-align: center;
   font-family: "Roboto", sans-serif;
@@ -165,17 +172,26 @@ const Parrafo = styled.p`
 const PokemonName = styled.h2`
   font-size: 35px;
   color: ${({ color }) => color};
+  @media only screen and (max-width: 426px) {
+    font-size:25px
+  }
 `;
 const PokemonCreador = styled.h3`
   font-size: 11px;
   font-weight: 400;
   color: #8c8c8c;
+  @media only screen and (max-width: 426px) {
+    font-size:8px
+  }
 `;
 const PokemonTipo = styled.h3`
   font-size: 15px;
   font-weight: 600;
   color: #000;
   text-align: center;
+  @media only screen and (max-width: 426px) {
+    font-size:10px
+  }
 `;
 const HoverableBiUndo = styled(BiUndo)`
   transition: color 0.3s ease;

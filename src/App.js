@@ -10,6 +10,7 @@ import NuevoPokemon from "./components/NuevoPokemon";
 import TipoPokemon from "./components/TipoPokemon";
 import EditarCategoria from "./components/EditarCategoria";
 import EditarPokemon from "./components/EditarPokemon";
+import CategoriaPokemon from "./components/CategoriaPokemon";
 
 export default function Root() {
   return (
@@ -28,11 +29,12 @@ export function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pokemon/:pokemonName" element={<PokemonDetalles />}/>
+          <Route path="/categoria/:categoriaName" element={<CategoriaPokemon/>}/>
           <Route path="/nuevo-pokemon" element={<NuevoPokemon />} />
           <Route path="/nuevo-tipo-de-pokemon" element={<TipoPokemon />} /> 
           <Route path="/tipo-pokemon/editar/:id" element={<EditarCategoria />}/>
           
-          <Route path="/tipo-pokemon/editarPokemon/:id" element={<EditarPokemon />}/>
+          <Route path="/pokemon/editarPokemon/:id" element={<EditarPokemon />}/>
         </Routes>
         <Footer/>
       </ContenedorHome>

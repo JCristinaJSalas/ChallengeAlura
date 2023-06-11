@@ -24,6 +24,7 @@ const Header = () => {
 
 export default Header;
 const ContenedorHeader = styled.nav`
+  width: 100vw;
   background-color: #212b34;
   display: flex;
   align-items: center;
@@ -32,9 +33,26 @@ const ContenedorHeader = styled.nav`
   height: 5em;
   border-bottom: 4px solid #2a7ae4;
   text-align: center;
+  @media only screen and (max-width: 426px) {
+      flex-direction:column;
+      height: auto;
+      padding: 10px;
+      border-bottom: 2px solid #2a7ae4;
+      padding-bottom:30px;
+    }
+    @media only screen and (min-width: 427px) and (max-width: 769px) {
+      height: auto;
+      padding: 5px;
+      border-bottom: 3px solid #2a7ae4;
+    }
+    
 `;
 
 const ImagenLogo = styled.img`
   object-fit: contain;
   height: 100%;
+  max-width: 100%;
+  @media only screen and (max-width: 426px) {
+      padding-bottom: 15px;
+    }
 `;

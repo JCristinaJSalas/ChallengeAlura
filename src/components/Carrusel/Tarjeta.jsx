@@ -24,7 +24,7 @@ const Tarjeta = ({ id, name, tipoPokemon, linkImagen, logo, color }) => {
           <Tipo>
             <TitlePokemon>Tipo de Pokemon :</TitlePokemon>
             <Categoria color={color}>{tipoPokemon}</Categoria>
-            <img src={logo} alt="agualogo" width={55} />
+            <ImagenLogo src={logo} alt={name}  />
           </Tipo>
 
           <NavLink to={`/pokemon/${name}`} color={color}>
@@ -52,12 +52,15 @@ const ContenedorDiv = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: #fafafa;
-  width: 300px;
   height: 470px;
   border-radius: 5px;
   text-decoration: none;
+  margin: 10px;
   &:hover {
     border: 5px solid ${(props) => props.color};
+  }
+  @media only screen and (max-width: 417px) {
+    height: auto;
   }
 `;
 const Root = styled.div`
@@ -66,6 +69,11 @@ const Root = styled.div`
   flex-direction: column;
   padding-bottom: 25px;
   overflow: hidden;
+  width: 100%;
+  flex-wrap:wrap;
+  @media only screen and (max-width: 417px) {
+    padding: 0px;
+  }
 `;
 const ContenedorInfo = styled.div`
   display: flex;
@@ -92,6 +100,10 @@ const ImagenPokemon = styled.img`
   height: 250px;
   width: 300px;
   object-fit: contain;
+  @media only screen and (max-width: 417px) {
+    height: 180px;
+    width: 150px;
+  }
 `;
 
 const Categoria = styled.h2`
@@ -100,6 +112,13 @@ const Categoria = styled.h2`
   font-weight: 700;
   padding-right: 20px;
 `;
+const ImagenLogo = styled.img`
+  width: 50px;
+  @media only screen and (max-width:417px) {
+    width: 30px;
+    
+  }
+`
 const NavLink = styled(Link)`
   color: ${(props) => props.color};
   text-decoration: none;

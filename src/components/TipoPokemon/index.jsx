@@ -161,7 +161,7 @@ export default TipoPokemon;
 
 const Formulario = styled.form`
   background: #4d555c;
-  width: 50vw;
+  width: 60vw;
   max-width: 550px;
   margin: 30px auto 50px auto;
   padding: 2rem;
@@ -170,6 +170,10 @@ const Formulario = styled.form`
   font-family: "Roboto";
   text-align: center;
   border-radius: 15px;
+  @media only screen and (max-width: 768px){
+    width: 90vw;
+    font-size:10px;
+  }
 `;
 const TituloForm = styled.h2`
   font-weight: 400;
@@ -177,10 +181,13 @@ const TituloForm = styled.h2`
   text-align: center;
   color: #2e8686;
   margin: 30px auto 0 auto;
+  @media only screen and (max-width: 425px){
+    font-size: 25px;
+  }
 `;
 const ColorInput = styled(MuiColorInput)`
   .css-1o9s3wi-MuiInputBase-input-MuiOutlinedInput-input {
-    font-size: 1.2rem;
+    font-size: 1rem;
     letter-spacing: 5px;
     padding-left: 25px;
     background: #53585d;

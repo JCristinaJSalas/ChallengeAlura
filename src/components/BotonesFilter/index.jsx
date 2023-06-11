@@ -30,9 +30,14 @@ const ContendorBotones = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   width: 100vw;
-  padding-bottom: 20px;
+  padding: 20px;
+  @media only screen and (max-width: 426px) {
+    padding: 10px;
+  }
+
 `;
 
 const ContenedorBoton = styled.div`
   margin: 5px;
+
 `;

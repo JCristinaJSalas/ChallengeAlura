@@ -11,12 +11,15 @@ import Categoria from "../Categorias";
 const Home = () => {
   const { pokemon, tipoPokemon } = useContext(FirebaseContexto);
   const uniqueTypes = tipoPokemon.filter(
-    (tipo, index, self) =>
-      self.findIndex((t) => t.tipo === tipo.tipo) === index
+    (tipo, index, self) => self.findIndex((t) => t.tipo === tipo.tipo) === index
   );
   const allCategorias = [
-    { value: "All", color: "#2A7AE4" , id: '001'},
-    ...uniqueTypes.map((tipo) => ({ value: tipo.tipo, color: tipo.color, id: tipo.id }))
+    { value: "All", color: "#2A7AE4", id: "001" },
+    ...uniqueTypes.map((tipo) => ({
+      value: tipo.tipo,
+      color: tipo.color,
+      id: tipo.id,
+    })),
   ];
   const [pokeData, setPokeData] = useState([]);
   const [showComponent, setShowComponent] = useState(false);
@@ -49,15 +52,20 @@ const Home = () => {
       <ContenedorTitulo>
         <Titulo>Tipos de Pokemon</Titulo>
         <Link to="/nuevo-tipo-de-pokemon">
-          <Boton text="+ Tipo Pokemon" variant="contained" color="#2e8686" palabra = 'eleccion'/>
+          <Boton
+            text="+ Tipo"
+            variant="contained"
+            color="#2e8686"
+            palabra="eleccion"
+          />
         </Link>
       </ContenedorTitulo>
       {showComponent ? (
         <BotonesFilter tipoPokemon={allCategorias} funcion={filterTipo} />
       ) : null}
       <Carrusel pokemon={pokeData} tipoPokemon={tipoPokemon} />
-      <hr/>
-      <Categoria/>
+      <hr />
+      <Categoria />
     </>
   );
 };
@@ -66,12 +74,16 @@ export default Home;
 const ContenedorTitulo = styled.div`
   display: flex;
   align-items: center;
-justify-content: center;
-margin: 1rem auto;
-width: 100vw;
-
+  justify-content: space-evenly;
+  margin: 1rem auto;
+  width: 100vw;
+  @media only screen and (max-width: 426px) {
+    flex-direction: column;
+  }
 `;
+
 const Titulo = styled.h2`
-  color : #fff;
+  color: #fff;
   margin: 10px 20px;
-` 
+  font-size: 18px;
+`;

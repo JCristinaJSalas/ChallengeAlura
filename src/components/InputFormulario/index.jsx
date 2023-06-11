@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import { Select, MenuItem, FormControl, InputLabel, FormHelperText } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { FirebaseContexto } from "../../FireBase/DatosFirebase";
+import { styled  as styledSystem} from '@mui/system';
 
 const theme = createTheme({
   palette: {
@@ -11,12 +12,13 @@ const theme = createTheme({
       contrastText: "#2e8686",
     },
   },
+
 });
 
 export const InputForm = ({ text, error, textoayuda, funcion, value, type,inputMode, pattern }) => {
   return (
     <ThemeProvider theme={theme}>
-      <TextField
+      <TextoField
         label={text}
         variant="standard"
         color="primary"
@@ -30,11 +32,25 @@ export const InputForm = ({ text, error, textoayuda, funcion, value, type,inputM
         type={type}
         inputMode={inputMode}
         pattern={pattern}
+        required
       />
     </ThemeProvider>
   );
 };
-
+const TextoField = styledSystem(TextField)(({ theme }) => ({
+  '& .MuiFormLabel-root': {
+    fontSize: 12, // Tamaño de fuente base
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 12, // Tamaño de fuente para pantallas de hasta 'sm'
+    },
+    [theme.breakpoints.between('sm', 'md')]: {
+      fontSize: 14, // Tamaño de fuente para pantallas entre 'sm' y 'md'
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: 16, // Tamaño de fuente para pantallas a partir de 'md'
+    },
+  },
+}));
 export const TextDescription = ({
   text,
   error,
@@ -45,7 +61,7 @@ export const TextDescription = ({
 }) => {
   return (
     <ThemeProvider theme={theme}>
-      <TextField
+      <TextoField
         label={text}
         variant="standard"
         color="primary"
@@ -55,6 +71,7 @@ export const TextDescription = ({
         helperText = {textoayuda}
         value={value}
         rows={4}
+        required
         inputlabelprops={{
           style: { color: theme.palette.primary.contrastText },
         }}

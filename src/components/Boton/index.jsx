@@ -14,6 +14,15 @@ const theme = createTheme({
 const Boton = ({ color, text, funcion, type = "text", variant, palabra }) => {
   const updatedTheme = createTheme({
     ...theme,
+    overrides: {
+      MuiButton: {
+        root: {
+          [theme.breakpoints.down("sm")]: {
+            fontSize: "10px",
+          },
+        },
+      },
+    },
     palette: {
       ...theme.palette,
       eleccion: {
@@ -26,7 +35,12 @@ const Boton = ({ color, text, funcion, type = "text", variant, palabra }) => {
 
   return (
     <ThemeProvider theme={updatedTheme}>
-      <Button variant={variant} onClick={funcion} type={type} color={palabra}>
+      <Button
+        variant={variant}
+        onClick={funcion}
+        type={type}
+        color={palabra}
+      >
         {text}
       </Button>
     </ThemeProvider>
